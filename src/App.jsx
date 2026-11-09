@@ -14,6 +14,8 @@ const NewPopular = lazy(() => import('./pages/NewPopular.jsx'))
 const MyList = lazy(() => import('./pages/MyList.jsx'))
 const Search = lazy(() => import('./pages/Search.jsx'))
 const Watch = lazy(() => import('./pages/Watch.jsx'))
+const WatchYT = lazy(() => import('./pages/WatchYT.jsx'))
+const YouTubeResults = lazy(() => import('./components/YouTubeResults.jsx'))
 const Details = lazy(() => import('./pages/Details.jsx'))
 const Settings = lazy(() => import('./pages/Settings.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
@@ -23,7 +25,7 @@ export default function App() {
   const { pathname } = useLocation()
   const [params, setParams] = useSearchParams()
   const detailId = params.get('d')
-  const immersive = pathname.startsWith('/watch')
+  const immersive = pathname.startsWith('/watch') || pathname.startsWith('/play')
 
   const closeDetails = () => {
     const next = new URLSearchParams(params)
@@ -44,7 +46,8 @@ export default function App() {
               <Route path="/pinoy" element={<Pinoy />} />
               <Route path="/new" element={<NewPopular />} />
               <Route path="/my-list" element={<MyList />} />
-              <Route path="/search" element={<Search />} />
+              <Route path="/search" element={<><Search /><YouTubeResults /></>} />
+              <Route path="/play/:vid" element={<ErrorBoundary><WatchYT /></ErrorBoundary>} />
               <Route path="/watch/:id" element={<ErrorBoundary><Watch /></ErrorBoundary>} />
               <Route path="/title/:id" element={<Details />} />
               <Route path="/settings" element={<Settings />} />

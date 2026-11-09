@@ -12,19 +12,22 @@ export default function Home() {
   const { settings } = useSettings()
   const { continueWatching } = useMyList()
 
-  const categories = useMemo(() => {
-    const all = buildCategories(movies)
-    const pin = all.find((c) => c.id === 'pinoy')
-    return pin ? [pin, ...all.filter((c) => c.id !== 'pinoy')] : all
+  // One row per studio channel; falls back to genre rows when titles have no channel
+  const rows = useMemo(() => {
+    const groups = new Map()
+    movies.forEach((m) => {
+      if (!m.channel) return
+      if (!groups.has(m.channel)) groups.set(m.channel, [])
+      groups.get(m.channel).push(m)
+    })
+    if (groups.size) return [...groups].map(([name, items]) => ({ id: name, title: name, items }))
+    return buildCategories(movies)
   }, [])
-  const pinoyItems = useMemo(() => movies.filter((m) => m.genres && m.genres.includes('Pinoy')), [])
-  const pinoyFirst = pinoyItems.length >= 5
-  const top10 = useMemo(() => (pinoyFirst ? pinoyItems.slice(0, 10) : getTop10(movies)), [pinoyFirst, pinoyItems])
+  const top10 = useMemo(() => getTop10(movies), [])
   const featured = useMemo(() => {
-    if (pinoyFirst) return pinoyItems.slice(0, 5)
-    const trending = categories.find((c) => c.id === 'trending')
-    return (trending?.items.length ? trending.items : movies).slice(0, 5)
-  }, [categories, pinoyFirst, pinoyItems])
+    const trending = rows.find((c) => c.id === 'trending')
+    return (trending && trending.items.length ? trending.items : movies).slice(0, 5)
+  }, [rows])
 
   const resume = useMemo(
     () =>
@@ -43,8 +46,8 @@ export default function Home() {
       <Hero items={featured} />
       <div className="home__rows">
         <Row title="Continue Watching" items={resumeItems} progress={progressMap} />
-        {settings.showTop10 && <Row title={pinoyFirst ? 'Top 10 Pinoy Movies Today' : 'Top 10 on YT PREMIUM Today'} items={top10} rank />}
-        {categories.map((c) => (
+        {settings.showTop10 && <Row title="Top 10 on YT PREMIUM Today" items={top10} rank />}
+        {rows.map((c) => (
           <Row key={c.id} title={c.title} items={c.items} />
         ))}
       </div>

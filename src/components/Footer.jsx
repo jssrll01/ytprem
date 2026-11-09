@@ -24,7 +24,7 @@ export default function Footer() {
         </nav>
         <div>
           <h3>About</h3>
-          <p>Free public-domain and freely embeddable films, streamed from YouTube.</p>
+          <p>Filipino films and videos, streamed from YouTube.</p>
         </div>
       </div>
       <p className="footer__copy">© {new Date().getFullYear()} YT PREMIUM</p>
