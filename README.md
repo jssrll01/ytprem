@@ -8,3 +8,8 @@ YouTube search and player. The Google API key never reaches the browser: the pag
 ## Deploy on Render
 New > Web Service > connect this repo. Build command: `echo ok`. Start command: `node server.js`.
 Environment > add `YT_API_KEY` (and optionally `YT_SEARCH_SUFFIX`). Redeploy after changing it.
+
+## Render Static Site (key from env var, injected at build)
+Build command: `node build.js`   Publish directory: `dist`
+Environment: `YT_API_KEY` (optional `YT_SEARCH_SUFFIX`). The key is in the built page, so restrict it in
+Google Cloud Console > Credentials: HTTP referrers = your onrender.com site, API = YouTube Data API v3 only.

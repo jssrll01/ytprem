@@ -65,7 +65,7 @@
     var q = $('q').value.trim(); if (!q) return;
     var out = $('results'); out.textContent = ''; $('msg').textContent = '';
     for (var i = 0; i < 8; i++) { var s = document.createElement('div'); s.className = 'skel'; out.appendChild(s); }
-    fetch('/api/search?q=' + encodeURIComponent(q)).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+    window.ytSearch(q)
       .then(function (x) {
         out.textContent = '';
         if (!x.ok) { $('msg').textContent = x.j.error || 'Search failed.'; return; }
