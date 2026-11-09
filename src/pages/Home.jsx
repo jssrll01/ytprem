@@ -12,12 +12,19 @@ export default function Home() {
   const { settings } = useSettings()
   const { continueWatching } = useMyList()
 
-  const categories = useMemo(() => buildCategories(movies), [])
-  const top10 = useMemo(() => getTop10(movies), [])
+  const categories = useMemo(() => {
+    const all = buildCategories(movies)
+    const pin = all.find((c) => c.id === 'pinoy')
+    return pin ? [pin, ...all.filter((c) => c.id !== 'pinoy')] : all
+  }, [])
+  const pinoyItems = useMemo(() => movies.filter((m) => m.genres && m.genres.includes('Pinoy')), [])
+  const pinoyFirst = pinoyItems.length >= 5
+  const top10 = useMemo(() => (pinoyFirst ? pinoyItems.slice(0, 10) : getTop10(movies)), [pinoyFirst, pinoyItems])
   const featured = useMemo(() => {
+    if (pinoyFirst) return pinoyItems.slice(0, 5)
     const trending = categories.find((c) => c.id === 'trending')
     return (trending?.items.length ? trending.items : movies).slice(0, 5)
-  }, [categories])
+  }, [categories, pinoyFirst, pinoyItems])
 
   const resume = useMemo(
     () =>
@@ -36,7 +43,7 @@ export default function Home() {
       <Hero items={featured} />
       <div className="home__rows">
         <Row title="Continue Watching" items={resumeItems} progress={progressMap} />
-        {settings.showTop10 && <Row title="Top 10 on YT PREMIUM Today" items={top10} rank />}
+        {settings.showTop10 && <Row title={pinoyFirst ? 'Top 10 Pinoy Movies Today' : 'Top 10 on YT PREMIUM Today'} items={top10} rank />}
         {categories.map((c) => (
           <Row key={c.id} title={c.title} items={c.items} />
         ))}

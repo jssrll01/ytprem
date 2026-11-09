@@ -9,6 +9,7 @@ import ErrorBoundary from './components/ErrorBoundary.jsx'
 const Home = lazy(() => import('./pages/Home.jsx'))
 const TvShows = lazy(() => import('./pages/TvShows.jsx'))
 const Movies = lazy(() => import('./pages/Movies.jsx'))
+const Pinoy = lazy(() => import('./pages/Pinoy.jsx'))
 const NewPopular = lazy(() => import('./pages/NewPopular.jsx'))
 const MyList = lazy(() => import('./pages/MyList.jsx'))
 const Search = lazy(() => import('./pages/Search.jsx'))
@@ -40,6 +41,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/tv" element={<TvShows />} />
               <Route path="/movies" element={<Movies />} />
+              <Route path="/pinoy" element={<Pinoy />} />
               <Route path="/new" element={<NewPopular />} />
               <Route path="/my-list" element={<MyList />} />
               <Route path="/search" element={<Search />} />

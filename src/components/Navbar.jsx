@@ -7,6 +7,7 @@ export const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
   { to: '/tv', label: 'TV Shows' },
   { to: '/movies', label: 'Movies' },
+  { to: '/pinoy', label: 'Pinoy' },
   { to: '/new', label: 'New & Popular' },
   { to: '/my-list', label: 'My List' }
 ]
