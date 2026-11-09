@@ -6,6 +6,7 @@ export const TOP10_SLUGS = [
 ]
 
 export const CATEGORY_DEFS = [
+  { id: 'pinoy', title: 'Pinoy Movies', filter: has('Pinoy') },
   { id: 'trending', title: 'Trending Now', slugs: ['nosferatu', 'metropolis', 'night-of-the-living-dead', 'charade', 'the-general', 'robin-hood', 'house-on-haunted-hill'] },
   { id: 'popular', title: 'Popular on YT PREMIUM', slugs: ['his-girl-friday', 'safety-last', 'the-gold-rush', 'the-kid', 'the-mark-of-zorro', 'plan-9-from-outer-space', 'the-last-man-on-earth'] },
   { id: 'action', title: 'Action & Adventure', filter: has('Action', 'Adventure') },
