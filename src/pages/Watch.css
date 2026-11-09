@@ -1,0 +1,13 @@
+.watch {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #000;
+  color: #fff;
+}
+.watch--missing {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+}

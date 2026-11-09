@@ -1,0 +1,69 @@
+.sp { display: grid; gap: var(--space-5); max-width: 760px; }
+.sp-section h2 { margin-bottom: var(--space-2); font-size: 1.1rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+.sp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+
+.sp-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+.sp-field:last-child { border-bottom: 0; }
+.sp-field__text { display: grid; gap: 2px; min-width: 0; }
+.sp-field__label { font-size: 0.95rem; }
+.sp-field__hint { font-size: 0.78rem; color: var(--text-dim); }
+.sp-field__control { flex: none; }
+
+@media (max-width: 520px) {
+  .sp-field { flex-wrap: wrap; }
+  .sp-field__control { width: 100%; }
+}
+
+.sp-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transition: background var(--t-fast) var(--ease);
+}
+.sp-switch span {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform var(--t-fast) var(--ease);
+}
+.sp-switch.is-on { background: var(--accent); border-color: var(--accent); }
+.sp-switch.is-on span { transform: translateX(20px); }
+
+.sp-seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 3px; border-radius: var(--radius); background: var(--surface-2); }
+.sp-seg button { padding: 5px 12px; border-radius: var(--radius); font-size: 0.85rem; color: var(--text-dim); }
+.sp-seg button.is-on { background: var(--accent); color: #fff; }
+
+.sp-select {
+  max-width: 100%;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.sp-range { width: 180px; max-width: 100%; accent-color: var(--accent); }
+
+.sp-accents { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.sp-swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; }
+.sp-swatch.is-on { border-color: var(--text); }
+.sp-accents input[type='color'] { width: 34px; height: 30px; padding: 0; border: 1px solid var(--border); border-radius: var(--radius); background: none; cursor: pointer; }
+
+.sp-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
+.sp-notice { padding: var(--space-3) var(--space-4); font-size: 0.8rem; color: var(--text-dim); min-height: 1.2em; }

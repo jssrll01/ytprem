@@ -1,0 +1,50 @@
+.row { position: relative; z-index: 1; margin-bottom: var(--row-space); }
+.row:hover, .row:focus-within { z-index: 5; }
+
+.row__title {
+  position: relative;
+  z-index: 2;
+  margin: 0 var(--page-pad) var(--space-2);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+@media (min-width: 768px) { .row__title { font-size: 1.3rem; } }
+
+.row__viewport { position: relative; }
+
+.row__scroller {
+  display: flex;
+  gap: var(--row-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding: 0 var(--page-pad);
+  padding: 0 var(--page-pad);
+}
+.row__item { flex: none; scroll-snap-align: start; }
+
+/* Room for the scaled hover card and its info panel */
+@media (hover: hover) and (min-width: 768px) {
+  .row__scroller { padding: 44px var(--page-pad) 190px; margin: -44px 0 -190px; }
+}
+
+.row__arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  width: var(--page-pad);
+  min-width: 44px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--t) var(--ease);
+}
+.row__arrow--left { left: 0; justify-content: flex-start; background: linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent); }
+.row__arrow--right { right: 0; justify-content: flex-end; background: linear-gradient(to left, rgba(0, 0, 0, 0.7), transparent); }
+
+@media (hover: hover) and (min-width: 768px) {
+  .row__arrow { display: flex; top: 44px; bottom: 190px; }
+  .row:hover .row__arrow, .row__arrow:focus-visible { opacity: 1; }
+}

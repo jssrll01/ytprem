@@ -1,0 +1,4 @@
+.settings { padding: calc(var(--nav-h) + var(--safe-top) + var(--space-5)) var(--page-pad) var(--space-5); }
+.settings h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
+.settings__sub { margin: var(--space-1) 0 var(--space-5); color: var(--text-dim); font-size: 0.9rem; }
+.sp-section { scroll-margin-top: calc(var(--nav-h) + var(--space-4)); }

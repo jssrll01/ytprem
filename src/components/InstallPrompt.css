@@ -1,0 +1,26 @@
+.install {
+  position: fixed;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: calc(var(--bottom-nav-h) + var(--safe-bottom) + var(--space-3));
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: #1c1c1c;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  animation: fade-in 0.4s var(--ease) both;
+}
+.install__text { display: grid; flex: 1; gap: 2px; font-size: 0.85rem; }
+.install__text span { color: #b3b3b3; }
+.install__btn { padding: 0.45rem 1rem; font-size: 0.9rem; }
+.install__close { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #b3b3b3; }
+.install__close:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+
+@media (min-width: 768px) {
+  .install { left: auto; right: var(--space-5); bottom: var(--space-5); width: 400px; }
+}

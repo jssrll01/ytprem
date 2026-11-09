@@ -1,0 +1,11 @@
+.notfound {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  min-height: 80vh;
+  padding: var(--page-pad);
+  text-align: center;
+}
+.notfound h1 { font-size: clamp(2rem, 7vw, 4rem); }
+.notfound p { color: var(--text-dim); }

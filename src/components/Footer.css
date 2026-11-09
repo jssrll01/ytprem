@@ -1,0 +1,19 @@
+.footer {
+  margin-top: var(--space-6);
+  padding: var(--space-5) var(--page-pad) var(--space-5);
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+.footer h3 { margin-bottom: var(--space-2); color: var(--text); font-size: 0.9rem; }
+.footer li { margin-bottom: var(--space-1); }
+.footer a:hover { text-decoration: underline; }
+.footer__copy { margin-top: var(--space-5); font-size: 0.8rem; }
+@media (min-width: 768px) {
+  .footer__cols { grid-template-columns: repeat(3, minmax(0, 220px)); }
+}

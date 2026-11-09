@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ytprem</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><h1>ytprem</h1>
+  <form id="f"><input id="q" type="search" placeholder="Search YouTube" autocomplete="off" aria-label="Search"><button>Search</button></form>
+</header>
+<main>
+  <section id="stage" hidden>
+    <div class="video"><div id="player"></div></div>
+    <div id="title" class="title"></div>
+    <div class="bar">
+      <button id="pp" type="button" aria-label="Play or pause">Play</button>
+      <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+      <span id="time">0:00 / 0:00</span>
+    </div>
+  </section>
+  <p id="msg" class="msg"></p>
+  <section id="results" class="grid"></section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

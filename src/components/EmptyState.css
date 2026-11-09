@@ -1,0 +1,17 @@
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: calc(var(--nav-h) + 80px) var(--page-pad) 80px;
+  text-align: center;
+}
+.empty__title { font-size: 1.5rem; }
+.empty__text { color: var(--text-dim); max-width: 460px; }
+.empty__code {
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  word-break: break-all;
+}

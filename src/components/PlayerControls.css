@@ -1,0 +1,124 @@
+.pc {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  color: #fff;
+  transition: opacity var(--t) var(--ease);
+}
+.pc--hidden { opacity: 0; }
+.pc--hidden * { pointer-events: none !important; }
+
+.pc__scrim { position: absolute; inset: 0; pointer-events: auto; }
+
+.pc__top, .pc__bottom { position: absolute; left: 0; right: 0; z-index: 1; }
+
+.pc__top {
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: calc(var(--safe-top) + var(--space-3)) calc(var(--safe-right) + var(--space-4)) var(--space-6) calc(var(--safe-left) + var(--space-3));
+  background: linear-gradient(rgba(0, 0, 0, 0.75), transparent);
+}
+.pc__title { font-size: clamp(1rem, 3vw, 1.4rem); font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.pc__bottom {
+  bottom: 0;
+  padding: var(--space-6) calc(var(--safe-right) + var(--space-4)) calc(var(--safe-bottom) + var(--space-3)) calc(var(--safe-left) + var(--space-4));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+}
+
+.pc__btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  pointer-events: auto;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.pc__btn:hover { background: rgba(255, 255, 255, 0.15); }
+.pc__btn.is-on { color: var(--accent); }
+
+.pc__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #fff;
+  pointer-events: auto;
+}
+
+.pc__row { display: flex; align-items: center; gap: 2px; }
+.pc__spacer { flex: 1; }
+.pc__time { margin-left: var(--space-2); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.pc__volume { display: flex; align-items: center; pointer-events: auto; }
+.pc__volume input { width: 0; opacity: 0; accent-color: var(--accent); transition: width var(--t) var(--ease), opacity var(--t) var(--ease); }
+.pc__volume:hover input, .pc__volume:focus-within input { width: 90px; opacity: 1; margin-right: var(--space-2); }
+@media (hover: none) { .pc__volume input { display: none; } }
+
+.pc__menuWrap { position: relative; }
+.pc__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 3;
+  min-width: 130px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+  background: rgba(20, 20, 20, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  pointer-events: auto;
+}
+.pc__menu button { display: block; width: 100%; padding: 8px 18px; text-align: left; font-size: 0.9rem; color: #ddd; }
+.pc__menu button:hover { background: rgba(255, 255, 255, 0.1); }
+.pc__menu button.is-on { color: #fff; font-weight: 700; }
+.pc__menu button.is-on::before { content: '✓ '; color: var(--accent); }
+
+.seek { position: relative; padding: 10px 0; margin-bottom: var(--space-1); cursor: pointer; touch-action: none; pointer-events: auto; }
+.seek__track { position: relative; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.3); transition: height 0.12s var(--ease); }
+.seek:hover .seek__track, .seek:focus-visible .seek__track { height: 7px; }
+.seek__buffer, .seek__fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+.seek__buffer { background: rgba(255, 255, 255, 0.35); }
+.seek__fill { background: var(--accent); }
+.seek__thumb {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.12s var(--ease);
+}
+.seek:hover .seek__thumb, .seek:focus-visible .seek__thumb { transform: translateY(-50%) scale(1); }
+.seek__tip {
+  position: absolute;
+  bottom: 26px;
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.85);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .pc__btn { width: 40px; height: 40px; }
+  .pc__time { font-size: 0.75rem; }
+}

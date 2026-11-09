@@ -1,0 +1,9 @@
+.sk-page { min-height: 100vh; }
+.sk-hero { width: 100%; aspect-ratio: 16 / 9; border-radius: 0; }
+@media (min-width: 768px) {
+  .sk-hero { aspect-ratio: auto; height: 78vh; }
+}
+.sk-row { padding: var(--space-5) var(--page-pad) 0; }
+.sk-row__title { width: 160px; height: 20px; margin-bottom: var(--space-3); }
+.sk-row__cards { display: flex; gap: var(--row-gap); overflow: hidden; }
+.sk-card { flex: none; width: var(--card-w); aspect-ratio: 16 / 9; }
