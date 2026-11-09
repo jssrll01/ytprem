@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useMemo } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Player from '../components/Player.jsx'
 import { buildCategories } from '../data/categories.js'
 import { getMovie, movies } from '../data/movies.js'
 import './Watch.css'
+
+// Rendered into #root, outside the animated page wrapper, so position:fixed always means "the screen".
+const portal = (node) => createPortal(node, document.getElementById('root') || document.body)
 
 export default function Watch() {
   const { id } = useParams()
@@ -50,7 +54,7 @@ export default function Watch() {
   }, [movie])
 
   if (!movie) {
-    return (
+    return portal(
       <div className="watch watch--missing">
         <h1>Title not found</h1>
         <Link to="/" className="btn btn-play">Back to Home</Link>
@@ -58,7 +62,7 @@ export default function Watch() {
     )
   }
 
-  return (
+  return portal(
     <div className="watch">
       <Player movie={movie} next={next} onBack={goBack} onNext={goNext} onTryAnother={tryAnother} />
     </div>
