@@ -1,9 +1,25 @@
 {
-  "name": "ytprem",
-  "version": "1.0.0",
+  "name": "yt-premium",
   "private": true,
-  "description": "YouTube search and player. The API key stays on the server.",
-  "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" }
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "add-id": "node scripts/add-id.mjs",
+    "verify-ids": "node scripts/verify-ids.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "resolve-ids": "node scripts/resolve-ids.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.3",
+    "vite": "5.4.11",
+    "vite-plugin-pwa": "0.20.5"
+  }
 }

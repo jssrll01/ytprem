@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: ytprem
-    runtime: node
-    buildCommand: echo "nothing to build"
-    startCommand: node server.js
-    envVars:
-      - key: YT_API_KEY
-        sync: false
